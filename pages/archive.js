@@ -5,9 +5,6 @@ import ProductCard from 'components/ProductCard';
 
 import { getArchivePage } from 'lib/api';
 
-
-
-
 export default function IndexPage({ archivePage }) {
   return (
     <PageLayout className="index">
@@ -19,10 +16,13 @@ export default function IndexPage({ archivePage }) {
             {archivePage[0].products.map(product => 
                 <ProductCard  
                     key={product.name}
-                    slug={product.slug}
                     name={product.name}
                     price={product.price}
                     image={product.image}
+                    link={{
+                      href: '/[slug]',
+                      as: `/${product.slug}`
+                    }}
                 >
                 </ProductCard>
             )}
@@ -34,6 +34,7 @@ export default function IndexPage({ archivePage }) {
 
 export async function getStaticProps() {
   const archivePage = await getArchivePage();
+  
   return {
     props: {
         archivePage

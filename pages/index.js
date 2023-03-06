@@ -1,7 +1,9 @@
+import Link from 'next/link';
+
 import Header from 'components/Header';
 import PageLayout from 'components/PageLayout';
 import ProductCard from 'components/ProductCard';
-import Link from 'next/link';
+
 
 import { getArchivePage } from 'lib/api';
 import { getHomePage } from 'lib/api';
@@ -26,10 +28,13 @@ export default function IndexPage({ archivePage, home }) {
           { archivePage[0].products.slice(0,3).map(product => 
                   <ProductCard  
                       key={product.name}
-                      slug={product.slug}
                       name={product.name}
                       price={product.price}
                       image={product.image}
+                      link={{
+                        href: '/[slug]',
+                        as: `/${product.slug}`
+                      }}
                   >
                   </ProductCard>
               )
@@ -44,6 +49,7 @@ export default function IndexPage({ archivePage, home }) {
 export async function getStaticProps() {
   const archivePage = await getArchivePage();
   const home = await getHomePage();
+  
   return {
     props: {
       archivePage,

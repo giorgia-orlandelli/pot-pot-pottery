@@ -3,6 +3,9 @@ const nextConfig = {
   reactStrictMode: false,
   images: {
     domains: ['cdn.sanity.io'],
+  },
+  experimental: {
+    scrollRestoration: true
   }
 }
 

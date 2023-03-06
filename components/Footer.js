@@ -7,5 +7,5 @@ export default function Footer() {
                 <a href='https://www.instagram.com/potpotpottery/' target='_blank' className='text-regular color-2'>Facebook</a>
             </div>
         </div>
-    ) 
+    )
 }
