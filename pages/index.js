@@ -54,6 +54,7 @@ export async function getStaticProps() {
     props: {
       archivePage,
       home
-    }
+    },
+    revalidate: 1
   };
 }

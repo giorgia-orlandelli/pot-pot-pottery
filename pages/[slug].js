@@ -42,7 +42,8 @@ export async function GetServerSideProps({params}) {
     return {
         props: {
             productDetail
-        }
+        },
+        revalidate: 1
     }
 }
 
